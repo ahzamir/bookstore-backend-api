@@ -11,5 +11,5 @@ connectDB();
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
 
-// Export as a serverless function for Vercel
+// Export the app as a serverless function
 module.exports = app;
