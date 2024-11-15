@@ -1,8 +1,9 @@
 {
   "version": 2,
-  "builds": [{ "src": "index.js", "use": "@now/node-server" }],
-  "routes": [
-    { "src": "/api/users", "dest": "/index.js" },
-    { "src": "/api/books", "dest": "/index.js" }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
   ]
 }
