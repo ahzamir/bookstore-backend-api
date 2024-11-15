@@ -1,9 +1,9 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import User from '../models/User';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 // SignUp
-exports.registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
     try {
         const salt = await bcrypt.genSalt(10);
@@ -19,7 +19,7 @@ exports.registerUser = async (req, res) => {
 };
 
 // SignIn
-exports.loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
@@ -39,7 +39,7 @@ exports.loginUser = async (req, res) => {
 };
 
 // Get the user profile
-exports.getProfile = async (req, res) => {
+export const getProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select("-password");
         res.status(200).json(user);

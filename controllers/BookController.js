@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const Book = require('../models/Book');
+import jwt from 'jsonwebtoken';
+import Book from '../models/Book';
 
-exports.addBook = async (req, res) => {
+export const addBook = async (req, res) => {
     const { title, author, description, price } = req.body;
     const token = req.header('Authorization');
     if (!token) return res.status(401).json({ message: "Access Denied" });
@@ -21,7 +21,7 @@ exports.addBook = async (req, res) => {
     }
 };
 
-exports.getBooks = async (req, res) => {
+export const getBooks = async (req, res) => {
     try {
         const books = await Book.find().populate("user", "username");
         res.status(200).json(books);
@@ -30,7 +30,7 @@ exports.getBooks = async (req, res) => {
     }
 };
 
-exports.getBookById = async (req, res) => {
+export const getBookById = async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
         if (!book) return res.status(404).json({ message: "Book not found" });
@@ -40,7 +40,7 @@ exports.getBookById = async (req, res) => {
     }
 };
 
-exports.updateBook = async (req, res) => {
+export const updateBook = async (req, res) => {
     try {
         const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
@@ -52,7 +52,7 @@ exports.updateBook = async (req, res) => {
     }
 };
 
-exports.deleteBook = async (req, res) => {
+export const deleteBook = async (req, res) => {
     try {
         const book = await Book.findByIdAndDelete(req.params.id);
         if (!book) return res.status(404).json({ message: "Book not found" });

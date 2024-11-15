@@ -1,9 +1,9 @@
-const express = require('express');
-const serverless = require('serverless-http'); // Install using npm install serverless-http
+import express from 'express';
+import serverless from 'serverless-http'; // Install using npm install serverless-http
 
-const connectDB = require('../config/db');
-const userRoutes = require('../routes/userRoutes');
-const bookRoutes = require('../routes/bookRouters');
+import connectDB from '../config/db.js';
+import userRoutes from '../routes/userRoutes';
+import bookRoutes from '../routes/bookRouters';
 
 const app = express();
 app.use(express.json());
@@ -23,4 +23,4 @@ app.use((err, req, res, next) => {
 });
 
 // Export the app wrapped for serverless
-module.exports = serverless(app);
+export default serverless(app);
