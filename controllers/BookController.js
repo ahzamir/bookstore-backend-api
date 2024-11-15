@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Book from '../models/Book';
+import Book from '../models/Book.js';
 
 export const addBook = async (req, res) => {
     const { title, author, description, price } = req.body;

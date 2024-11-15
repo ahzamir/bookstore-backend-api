@@ -5,8 +5,8 @@ import {
     getBookById,
     updateBook,
     deleteBook
-} from '../controllers/BookController';
-import auth from '../middleware/authMiddleware';
+} from '../controllers/BookController.js';
+import auth from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 

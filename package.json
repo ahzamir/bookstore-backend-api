@@ -1,9 +1,9 @@
 {
   "name": "bookstore-backend-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
