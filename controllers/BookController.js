@@ -1,14 +1,18 @@
+const jwt = require('jsonwebtoken');
 const Book = require('../models/Book');
 
 exports.addBook = async (req, res) => {
     const { title, author, description, price } = req.body;
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).json({ message: "Access Denied" });
+    const user = jwt.verify(token, process.env.SECRET_KEY);
     try {
         const book = new Book({
             title,
             author,
             description,
             price,
-            user: req.user.id,
+            user: user.id,
         });
         await book.save();
         res.status(201).json(book);

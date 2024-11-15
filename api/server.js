@@ -1,5 +1,6 @@
-require('dotenv').config();
 const express = require('express');
+const serverless = require('serverless-http'); // Install using npm install serverless-http
+
 const connectDB = require('../config/db');
 const userRoutes = require('../routes/userRoutes');
 const bookRoutes = require('../routes/bookRouters');
@@ -21,5 +22,5 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: "Internal Server Error" });
 });
 
-// Export as a serverless function for Vercel
-module.exports = app;
+// Export the app wrapped for serverless
+module.exports = serverless(app);
