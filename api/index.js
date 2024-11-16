@@ -15,6 +15,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/', (req, res) => {
+    res.send('Welcome to Bookstore API');
+});
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
 
