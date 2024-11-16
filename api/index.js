@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import connectDB from './config/db';
-import userRoutes from './routes/userRoutes';
-import bookRoutes from './routes/bookRouters';
+import connectDB from '../config/db.js';
+import userRoutes from '../routes/userRoutes.js';
+import bookRoutes from '../routes/bookRoutes.js';
 
 dotenv.config();
 const app = express();
