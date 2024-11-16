@@ -1,8 +1,10 @@
-require('dotenv').config();
-const express = require('express');
-const connectDB = require('./config/db');
-const userRoutes = require('./routes/userRoutes');
-const bookRoutes = require('./routes/bookRouters');
+import dotenv from 'dotenv';
+import express from 'express';
+import connectDB from './config/db';
+import userRoutes from './routes/userRoutes';
+import bookRoutes from './routes/bookRouters';
+
+dotenv.config();
 const app = express();
 
 app.use(express.json());
